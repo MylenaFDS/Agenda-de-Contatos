@@ -1,0 +1,21 @@
+#contactForm {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+#contactList {
+    margin-top: 20px;
+}
+
+#contactItems {
+    list-style-type: none;
+    padding: 0;
+}
+
+#contactItems li {
+    margin-bottom: 10px;
+}
+
