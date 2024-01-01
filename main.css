@@ -3,7 +3,6 @@ body {
     background-color: #19f0f0;
     margin: 0;
     padding: 0;
-    
 }
 
 .container {
@@ -16,7 +15,7 @@ body {
 }
 
 h2 {
-    color: #ffd700; /* Código de cor para dourado */
+    color: #ffd700;
     text-align: center;
     font-size: 2em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -25,6 +24,8 @@ h2 {
 h3 {
     color: gold;
     text-align: center;
+    font-size: 2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 form {
@@ -39,7 +40,7 @@ form {
 label {
     font-weight: bold;
     margin-bottom: 5px;
-    color: #333;
+    color: blueviolet;
 }
 
 input {
@@ -67,12 +68,21 @@ button:hover {
     margin-top: 20px;
 }
 
+#contactTable th,
+#contactTable td {
+    padding: 10px; /* Adicione espaçamento aqui */
+    text-align: center;
+}
+
 #contactItems {
     list-style-type: none;
-    padding: 0;
 }
 
 #contactItems li {
     margin-bottom: 10px;
     font-size: 16px;
+}
+
+th {
+    color: blueviolet;
 }
