@@ -4,34 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda de Contatos</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
-    <h2>Agenda de Contatos</h2>
+    <div class="container">
+        <h2>Agenda de Contatos</h2>
 
-    <form id="contactForm">
-        <div class="form-group">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Telefone:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+
+            <button type="button" onclick="addContact()">Cadastrar</button>
+        </form>
+
+        <div id="contactList">
+            <h3>Lista de Contatos</h3>
+            <ul id="contactItems"></ul>
         </div>
-
-        <div class="form-group">
-            <label for="phone">Telefone:</label>
-            <input type="text" id="phone" name="phone" required>
-        </div>
-
-        <button type="button" onclick="addContact()">Cadastrar</button>
-    </form>
-
-    <div id="contactList">
-        <h3>Lista de Contatos</h3>
-        <ul id="contactItems"></ul>
     </div>
 
-    <script src="main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-
