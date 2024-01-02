@@ -1,65 +1,53 @@
-// script.js
-
-// Carregar contatos armazenados localmente
-var storedContacts = JSON.parse(localStorage.getItem('contacts')) || [];
-displayContacts(storedContacts);
-
 function addContact() {
     var name = document.getElementById("name").value;
     var phone = document.getElementById("phone").value;
 
+    var errorMessage = document.getElementById("errorMessage");
+
     if (name && phone) {
         var contactTable = document.getElementById("contactItems");
-        var row = contactTable.insertRow(-1);
 
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
+        if (contactExists(name, phone)) {
+            errorMessage.textContent = "O contato já existe.";
+            setTimeout(() => {
+                errorMessage.textContent = "";
+            }, 5000)
+        } else {
+            var row = contactTable.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
 
-        cell1.innerHTML = name;
-        cell2.innerHTML = phone;
-        cell3.innerHTML = '<button onclick="deleteContact(this)">Excluir</button>';
+            cell1.innerHTML = name;
+            cell2.innerHTML = phone;
+            cell3.innerHTML = '<button onclick="deleteContact(this)">Excluir</button>';
 
-        // Salvar o contato localmente
-        var storedContacts = JSON.parse(localStorage.getItem('contacts')) || [];
-        storedContacts.push({ name: name, phone: phone });
-        localStorage.setItem('contacts', JSON.stringify(storedContacts));
-
-        // Limpar os campos do formulário após adicionar o contato
-        document.getElementById("name").value = "";
-        document.getElementById("phone").value = "";
+            // Limpar os campos do formulário após adicionar o contato
+            document.getElementById("name").value = "";
+            document.getElementById("phone").value = "";
+        }
     } else {
         alert("Por favor, preencha todos os campos do formulário.");
     }
 }
 
-function displayContacts(contacts) {
+function contactExists(name, phone) {
     var contactTable = document.getElementById("contactItems");
-    contactTable.innerHTML = "";
+    var rows = contactTable.getElementsByTagName("tr");
 
-    contacts.forEach(function (contact) {
-        var row = contactTable.insertRow(-1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
+    for (var i = 0; i < rows.length; i++) {
+        var storedName = rows[i].cells[0].innerHTML;
+        var storedPhone = rows[i].cells[1].innerHTML;
 
-        cell1.innerHTML = contact.name;
-        cell2.innerHTML = contact.phone;
-        cell3.innerHTML = '<button onclick="deleteContact(this)">Excluir</button>';
-    });
+        if (storedName === name && storedPhone === phone) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function deleteContact(button) {
     var row = button.parentNode.parentNode;
-    var name = row.cells[0].innerHTML;
-    var phone = row.cells[1].innerHTML;
-
-    // Remover o contato localmente
-    var storedContacts = JSON.parse(localStorage.getItem('contacts')) || [];
-    var updatedContacts = storedContacts.filter(function (contact) {
-        return !(contact.name === name && contact.phone === phone);
-    });
-    localStorage.setItem('contacts', JSON.stringify(updatedContacts));
-
     row.parentNode.removeChild(row);
 }

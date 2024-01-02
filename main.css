@@ -86,3 +86,19 @@ button:hover {
 th {
     color: blueviolet;
 }
+.table-container {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+#contactTable {
+    flex: 0 0 100%; /* Ajuste a largura conforme necessário */
+}
+
+#errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
